@@ -4,7 +4,7 @@ import styled from "styled-components";
 //ui
 import Title from "../ui/Title";
 import Service from "../ui/Service";
-import FunctionButtonUF from "../ui/FunctionButtonUF";
+import FunctionButtonUF from "../ui/FunctionButton/FunctionButtonUF";
 
 //image
 import DailyWrite from '../../images/_DailyWrite.png';
@@ -14,6 +14,7 @@ import DailyManage from '../../images/_DailyManage.png';
 const Wrapper = styled.div`
     width:100%;
     height:100vh;
+    padding:0px 11.54%;
     background-color:#f5f5f5;
 
     display:flex;
@@ -34,7 +35,7 @@ const SubText = styled.p`
 const ServiceFrame = styled.div`
     display:flex;
     justify-content:space-between;
-    width:50%;
+    margin-bottom:80px;
 `
 
 function MainPage(props) {
@@ -46,8 +47,8 @@ function MainPage(props) {
             <SubText>이용하고싶은 서비스를 클릭해주세요!</SubText>
 
             <ServiceFrame>
-                <Service serviceName="일기작성" serviceIcon={DailyWrite}></Service>
-                <Service serviceName="일기관리" serviceIcon={DailyManage}></Service>
+                <Service serviceName="일기작성" serviceIcon={DailyWrite} navigateLink="write"></Service>
+                <Service serviceName="일기관리" serviceIcon={DailyManage} navigateLink=""></Service>
             </ServiceFrame>
 
             <FunctionButtonUF buttonName="계정관리"></FunctionButtonUF>

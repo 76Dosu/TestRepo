@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledButton = styled.div`
@@ -12,7 +13,6 @@ const StyledButton = styled.div`
     font-weight:bold;
     color:#F49090;
 
-    margin-top:80px;
     transition: .3s;
     cursor: pointer;
 
@@ -22,14 +22,15 @@ const StyledButton = styled.div`
     }
 `
 
-function UF_FunctionButton(props) {
+function FunctionButtonUF(props) {
 
-    const { buttonName } = props;
+    const navigate = useNavigate();
+    const { buttonName, navigateLink } = props;
 
     return (
-        <StyledButton>{buttonName}</StyledButton>
+        <StyledButton onClick={() => {navigate(`/${navigateLink}`)}}>{buttonName}</StyledButton>
     )   
 
 }
 
-export default UF_FunctionButton;
+export default FunctionButtonUF;
