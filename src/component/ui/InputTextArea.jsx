@@ -16,8 +16,10 @@ const StyledTextArea = styled.textarea`
 
 function TextInput(props) {
 
+    const { prompt, onChange } = props;
+
     return (
-        <StyledTextArea></StyledTextArea>
+        <StyledTextArea value={prompt} onChange={onChange}></StyledTextArea>
     )
 
 }

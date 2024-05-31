@@ -51,7 +51,7 @@ function MainPage(props) {
                 <Service serviceName="일기관리" serviceIcon={DailyManage} navigateLink=""></Service>
             </ServiceFrame>
 
-            <FunctionButtonUF buttonName="계정관리"></FunctionButtonUF>
+            <FunctionButtonUF navigateLink="" buttonName="계정관리"></FunctionButtonUF>
         </Wrapper>
         
     )   

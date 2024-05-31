@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 //ui
 import Header from "../ui/Header";
@@ -73,7 +73,17 @@ const WriteButtonFrame = styled.div`
 
 function DailyWrite(props) {
 
-    const navigate = useNavigate();
+    const [prompt, setPrompt] = useState("");
+    
+    const handleChange = (e) => {
+        setPrompt(e.target.value);
+    }
+
+    const handleClick = (e) => {
+        console.log('입력 값은 ' + prompt);
+    }
+
+    // const navigate = useNavigate();
 
     return (
         
@@ -90,7 +100,7 @@ function DailyWrite(props) {
             <WriteFrame>
                 <InputFrame>
                     <InputTitle>제목</InputTitle>
-                    <InputTextArea></InputTextArea>
+                    <InputTextArea onChange={handleChange} value={prompt}></InputTextArea>
                 </InputFrame>
 
                 <InputFrame>
@@ -98,8 +108,8 @@ function DailyWrite(props) {
                     <InputTextArea></InputTextArea>
                 </InputFrame>
             </WriteFrame>
-
-            <WriteButtonFrame onClick={() => navigate('/manage')} >
+            
+            <WriteButtonFrame onClick={handleClick}>
                 <WriteButtonUF buttonName="작성하기"></WriteButtonUF>
             </WriteButtonFrame>
             
