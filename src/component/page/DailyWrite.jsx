@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 
 //ui
 import Header from "../ui/Header";
 import WriteButtonUF from "../ui/WriteButton/WriteButtonUF";
 import InputTextArea from "../ui/InputTextArea";
-
-//image
 
 //styled
 const Wrapper = styled.div`
@@ -73,6 +72,30 @@ const WriteButtonFrame = styled.div`
 
 function DailyWrite(props) {
 
+    // GPT 연동
+    axios
+        .post(
+            "https://api.openai.com/v1/chat/completions",
+            {
+            model: "gpt-3.5-turbo",
+            messages: [{ role: "user", content: "안녕 AI" }],
+            },
+            {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+            },
+            }
+        )
+        .then((response) => {
+            console.log(response.data);
+            console.log(response.data.choices[0].message.content);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+
+    // 사용자 입력 받아오기
     const [prompt, setPrompt] = useState("");
     
     const handleChange = (e) => {
@@ -80,10 +103,11 @@ function DailyWrite(props) {
     }
 
     const handleClick = (e) => {
-        console.log('입력 값은 ' + prompt);
+        const createKeyword = `${prompt}에 대한 내용의 일기를 대표할 만한 키워드 5개를 도출해줘`
     }
 
     // const navigate = useNavigate();
+    
 
     return (
         
