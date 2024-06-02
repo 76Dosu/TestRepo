@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
+// import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 
 //ui
@@ -72,28 +72,80 @@ const WriteButtonFrame = styled.div`
 
 function DailyWrite(props) {
 
-    // GPT 연동
-    axios
-        .post(
-            "https://api.openai.com/v1/chat/completions",
-            {
-            model: "gpt-3.5-turbo",
-            messages: [{ role: "user", content: "안녕 AI" }],
-            },
-            {
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-            },
-            }
-        )
-        .then((response) => {
-            console.log(response.data);
-            console.log(response.data.choices[0].message.content);
+    // axios
+    //     .post(
+    //         BASE_URL,
+    //         {
+    //         model: "gpt-3.5-turbo",
+    //         messages: [{ role: "user", content: "안녕 AI" }],
+    //         },
+    //         {
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             Authorization: `Bearer ${API_KEY}`,
+    //         },
+    //         }
+    //     )
+    //     .then((response) => {
+    //         console.log(response.data);
+    //         console.log(response.data.choices[0].message.content);
+    //     })
+    //     .catch((error) => {
+    //         console.error(error);
+    //     });
+
+    // let results = [];
+
+    // // callGPT([질문], [저장할 배열])
+    // function callGPT(prompt, array){
+    //   fetch(BASE_URL, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'Authorization': `Bearer ${API_KEY}`
+    //     },
+    //     body: JSON.stringify({
+    //       model: "gpt-3.5-turbo",
+    //       messages: [{
+    //         role: "user",
+    //         content: `${prompt}에 대한 내용의 일기를 대표할 만한 키워드 5개를 도출해줘`
+    //       }]
+    //     })
+    //   })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     응답은 data.choices[0].message.content로 불러와져서 result 배열에 저장
+    //     array.push(prompt + "> " + data.choices[0].message.content);
+    //   });
+    // }
+
+    const ENDPOINT_URL = "https://api.openai.com/v1/chat/completions";
+    const GPT_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
+
+    let results = [];
+    
+    // callGPT([질문], [저장할 배열])
+    function callGPT(prompt, array){
+      fetch(ENDPOINT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${GPT_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          messages: [{
+            role: "user",
+            content: prompt
+          }]
         })
-        .catch((error) => {
-            console.error(error);
-        });
+      })
+      .then(response => response.json())
+      .then(data => {
+        // 응답은 data.choices[0].message.content로 불러와져서 result 배열에 저장
+        array.push(data.choices[0].message.content);
+      });
+    }
 
     // 사용자 입력 받아오기
     const [prompt, setPrompt] = useState("");
@@ -103,7 +155,8 @@ function DailyWrite(props) {
     }
 
     const handleClick = (e) => {
-        const createKeyword = `${prompt}에 대한 내용의 일기를 대표할 만한 키워드 5개를 도출해줘`
+        callGPT(prompt, results)
+        console.log(results)
     }
 
     // const navigate = useNavigate();
