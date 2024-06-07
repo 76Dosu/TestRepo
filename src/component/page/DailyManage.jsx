@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 //import { useNavigate } from "react-router-dom";
 
@@ -49,21 +49,48 @@ const FucntionButtonFrame = styled.div`
 
 function DailyManage(props) {
 
+    const GPT_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
+
+    const [imageUrl, setImageUrl] = useState('');
+
+    const generateImage = async () => {
+        try {
+        const response = await fetch('https://api.openai.com/v1/images/generations', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${GPT_API_KEY}`
+            },
+            body: JSON.stringify({
+            prompt: "flying cat",
+            n: 1,
+            size: '1024x1024'
+            })
+        });
+
+        const data = await response.json();
+        setImageUrl(data.data[0].url);
+        } catch (error) {
+        console.error('Error generating image:', error);
+        } finally {
+        }
+    };
+
     return (
         
         <Wrapper>
             <Title text="김희찬님의 일기를 바탕으로 생성된 이미지입니다."></Title>
-            <SubText>24.04.10</SubText>
+            <SubText onClick={generateImage}>24.04.10</SubText>
 
             <GenImageFrame>
-                <GenImage></GenImage>
+                <GenImage imgURL={imageUrl}></GenImage>
                 <GenImage></GenImage>
                 <GenImage></GenImage>
             </GenImageFrame>
 
             <FucntionButtonFrame>
                 <FunctionButtonF navigateLink="" marginRight="40px" buttonName="돌아가기"></FunctionButtonF>
-                <FunctionButtonUF navigateLink="" buttonName="저장하기"></FunctionButtonUF>
+                <FunctionButtonUF buttonName="저장하기"></FunctionButtonUF>
             </FucntionButtonFrame>
         </Wrapper>
         
@@ -71,4 +98,4 @@ function DailyManage(props) {
 
 }
 
-export default DailyManage;  
+export default DailyManage;

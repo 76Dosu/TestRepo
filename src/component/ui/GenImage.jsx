@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const GenImageItems = styled.div`
+const GenImageItems = styled.img`
     width:300px;
     height:300px;
     border-radius:8px;
@@ -11,8 +11,10 @@ const GenImageItems = styled.div`
 
 function GenImage(props) {
 
+    const { imgURL } = props;
+
     return (
-        <GenImageItems></GenImageItems>
+        <GenImageItems src={imgURL}></GenImageItems>
     )
 
 }
