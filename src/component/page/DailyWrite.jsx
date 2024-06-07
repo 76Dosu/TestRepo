@@ -6,7 +6,8 @@ import styled from "styled-components";
 //ui
 import Header from "../ui/Header";
 import WriteButtonUF from "../ui/WriteButton/WriteButtonUF";
-import InputTextArea from "../ui/InputTextArea";
+import InputTextContents from "../ui/InputTextArea/InputTextContents";
+import InputTextTitle from "../ui/InputTextArea/InputTextTitle";
 
 //styled
 const Wrapper = styled.div`
@@ -19,8 +20,8 @@ const Wrapper = styled.div`
 const TitleFrame = styled.div`
     width:100%;
     display:flex;
-    align-items:center;
-
+    align-items:flex-end;
+    
     margin-top:120px;
 `
 
@@ -49,9 +50,14 @@ const WriteFrame = styled.div`
 
 const InputFrame = styled.div`
     display:flex;
-    align-items:center;
+    align-items:flex-start;
 
     margin-top:36px;
+`
+
+const InputTitleFrame = styled(InputFrame)`
+    display:flex;
+    align-items:center;
 `
 
 const InputTitle = styled.p`
@@ -70,62 +76,31 @@ const WriteButtonFrame = styled.div`
     margin-left:auto;
 `
 
+const TestText =styled.p`
+    font-size:24px;
+`
+
 function DailyWrite(props) {
 
-    // axios
-    //     .post(
-    //         BASE_URL,
-    //         {
-    //         model: "gpt-3.5-turbo",
-    //         messages: [{ role: "user", content: "안녕 AI" }],
-    //         },
-    //         {
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             Authorization: `Bearer ${API_KEY}`,
-    //         },
-    //         }
-    //     )
-    //     .then((response) => {
-    //         console.log(response.data);
-    //         console.log(response.data.choices[0].message.content);
-    //     })
-    //     .catch((error) => {
-    //         console.error(error);
-    //     });
+    // 사용자 입력 받아오기
+    const [prompt, setPrompt] = useState("");
+    const [results, setResults] = useState([]);    
 
-    // let results = [];
+    const handleChange = (e) => {
+        setPrompt(e.target.value);
+    }
 
-    // // callGPT([질문], [저장할 배열])
-    // function callGPT(prompt, array){
-    //   fetch(BASE_URL, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'Authorization': `Bearer ${API_KEY}`
-    //     },
-    //     body: JSON.stringify({
-    //       model: "gpt-3.5-turbo",
-    //       messages: [{
-    //         role: "user",
-    //         content: `${prompt}에 대한 내용의 일기를 대표할 만한 키워드 5개를 도출해줘`
-    //       }]
-    //     })
-    //   })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     응답은 data.choices[0].message.content로 불러와져서 result 배열에 저장
-    //     array.push(prompt + "> " + data.choices[0].message.content);
-    //   });
-    // }
+    const handleClick = (e) => {
+        console.log(prompt);
+        callGPT(prompt,results);
+        console.log(results)
+    }
 
     const ENDPOINT_URL = "https://api.openai.com/v1/chat/completions";
     const GPT_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 
-    let results = [];
-    
     // callGPT([질문], [저장할 배열])
-    function callGPT(prompt, array){
+    function callGPT(prompt){
       fetch(ENDPOINT_URL, {
         method: 'POST',
         headers: {
@@ -136,31 +111,16 @@ function DailyWrite(props) {
           model: "gpt-3.5-turbo",
           messages: [{
             role: "user",
-            content: prompt
+            content: `${prompt}라는 내용의 일기를 요약할 수 있는 키워드 5개를 순서없이 한줄에 나열해줘. 연결은 콤마로 해줘`
           }]
         })
       })
       .then(response => response.json())
       .then(data => {
         // 응답은 data.choices[0].message.content로 불러와져서 result 배열에 저장
-        array.push(data.choices[0].message.content);
+        setResults((data.choices[0].message.content));
       });
     }
-
-    // 사용자 입력 받아오기
-    const [prompt, setPrompt] = useState("");
-    
-    const handleChange = (e) => {
-        setPrompt(e.target.value);
-    }
-
-    const handleClick = (e) => {
-        callGPT(prompt, results)
-        console.log(results)
-    }
-
-    // const navigate = useNavigate();
-    
 
     return (
         
@@ -175,16 +135,18 @@ function DailyWrite(props) {
             <DivideLine />
 
             <WriteFrame>
-                <InputFrame>
+                <InputTitleFrame>
                     <InputTitle>제목</InputTitle>
-                    <InputTextArea onChange={handleChange} value={prompt}></InputTextArea>
-                </InputFrame>
+                    <InputTextTitle></InputTextTitle>
+                </InputTitleFrame>
 
                 <InputFrame>
                     <InputTitle>내용</InputTitle>
-                    <InputTextArea></InputTextArea>
+                    <InputTextContents onChange={handleChange} value={prompt}></InputTextContents>
                 </InputFrame>
             </WriteFrame>
+
+            <TestText>{results}</TestText>
             
             <WriteButtonFrame onClick={handleClick}>
                 <WriteButtonUF buttonName="작성하기"></WriteButtonUF>
