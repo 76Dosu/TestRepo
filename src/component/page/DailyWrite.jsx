@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-// import axios from "axios";
+import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 
 //ui
@@ -86,6 +86,23 @@ function DailyWrite(props) {
     const [prompt, setPrompt] = useState("");
     const [results, setResults] = useState([]);    
 
+    // axios로 사용자 데이터 db.json으로 넘기기
+    const onSubmit = () => {
+        let timestamp = new Date().getTime()
+
+        let year = new Date().getFullYear()
+        let month = new Date().getMonth();
+        let day = new Date().getDate()
+        let myTime = `${year}.${month + 1}.${day}`
+
+        axios.post('http://localhost:3001/posts', {
+          id: timestamp,
+          prompt: prompt,
+          keyword: results, 
+          date: myTime,
+        })
+      };
+
     const handleChange = (e) => {
         setPrompt(e.target.value);
     }
@@ -150,6 +167,10 @@ function DailyWrite(props) {
             
             <WriteButtonFrame onClick={handleClick}>
                 <WriteButtonUF buttonName="작성하기"></WriteButtonUF>
+            </WriteButtonFrame>
+
+            <WriteButtonFrame onClick={onSubmit}>
+                <WriteButtonUF buttonName="테스트"></WriteButtonUF>
             </WriteButtonFrame>
             
         </Wrapper>
