@@ -5,10 +5,9 @@ import { useNavigate } from "react-router-dom";
 const StyledButton = styled.div`
     width:fit-content;
     padding:12px 16px;
-    background-color:#F49090;
-    border:1px solid #F49090;
+    background-color:var(--main-color);
+    border:1px solid var(--main-color);
     border-radius:56px;
-
     font-size:18px;
     font-weight:bold;
     color:white;
@@ -17,7 +16,7 @@ const StyledButton = styled.div`
     cursor: pointer;
 
     &:hover {
-        background-color:#F49090;
+        background-color:var(--main-color);
         color:white;
     }
 `

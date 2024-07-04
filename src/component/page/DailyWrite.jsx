@@ -14,7 +14,7 @@ const Wrapper = styled.div`
     width:100%;
     height:100vh;
     padding:0px 11.54%;
-    background-color:#f5f5f5;
+    background-color:var(--main-bcColor);
 `
 
 const TitleFrame = styled.div`
@@ -26,20 +26,14 @@ const TitleFrame = styled.div`
 `
 
 const Title = styled.p`
-    font-size:48px;
+    font-size:40px;
     font-weight:600;
-    color:#333;
+    color:white;
 `
 
-const SubTitle = styled.p`
-    font-size:24px;
-    font-weight:400;
-    color:#333;
-    margin-left:16px;
-`
-const DivideLine = styled.hr`
+const DivideLine = styled.div`
     height:1px;
-    border:1px solid var(--main-textColor);
+    background-color:white;
     margin:12px 0px 0px 0px;
 `
 
@@ -51,21 +45,12 @@ const WriteFrame = styled.div`
 const InputFrame = styled.div`
     display:flex;
     align-items:flex-start;
-
-    margin-top:36px;
+    border-top:2px solid #333;
 `
 
 const InputTitleFrame = styled(InputFrame)`
     display:flex;
     align-items:center;
-`
-
-const InputTitle = styled.p`
-    font-size:24px;
-    font-weight:bold;
-    color:#333;
-
-    width:12%;
 `
 
 const WriteButtonFrame = styled.div`
@@ -145,20 +130,17 @@ function DailyWrite(props) {
             <Header></Header>
 
             <TitleFrame>
-                <Title>일기 작성</Title>
-                <SubTitle>오늘의 하루를 기록해보세요</SubTitle>
+                <Title>하루를 기록해보세요!</Title>
             </TitleFrame>
 
             <DivideLine />
 
             <WriteFrame>
                 <InputTitleFrame>
-                    <InputTitle>제목</InputTitle>
                     <InputTextTitle></InputTextTitle>
                 </InputTitleFrame>
 
                 <InputFrame>
-                    <InputTitle>내용</InputTitle>
                     <InputTextContents onChange={handleChange} value={prompt}></InputTextContents>
                 </InputFrame>
             </WriteFrame>
@@ -169,9 +151,9 @@ function DailyWrite(props) {
                 <WriteButtonUF buttonName="작성하기"></WriteButtonUF>
             </WriteButtonFrame>
 
-            <WriteButtonFrame onClick={onSubmit}>
+            {/* <WriteButtonFrame onClick={onSubmit}>
                 <WriteButtonUF buttonName="테스트"></WriteButtonUF>
-            </WriteButtonFrame>
+            </WriteButtonFrame> */}
             
         </Wrapper>
         

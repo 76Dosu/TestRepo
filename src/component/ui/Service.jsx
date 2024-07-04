@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const ServiceContainer = styled.div`
-    width: 360px;
-    height:360px;
-    background-color:white;
-    border-radius:60px;
+    width: 326px;
+    height: 326px;
+    background-color:${props => props.backgroundColor || "white"};
+    border-radius:36px;
     box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.15);
     transition: .3s;
-    margin-right:160px;
+    margin-right:100px;
 
     display:flex;
     flex-direction: column;
@@ -19,7 +19,6 @@ const ServiceContainer = styled.div`
     cursor: pointer;
 
     &:hover {
-        box-shadow: 4px 4px 16px rgba(244, 144, 144, 0.3);
         transform:scale(1.03);
     }
 
@@ -29,27 +28,27 @@ const ServiceContainer = styled.div`
 `
 
 const ServiceName = styled.p`
-    font-size:24px;
-    font-weight: 400;
-    color:#333;
+    font-size:32px;
+    font-weight: 700;
+    color:${props => props.color || "#333"};
 
-    margin-bottom:36px;
+    margin-bottom:48px;
 `
 
 const ServiceIcon = styled.img`
-    width:160px;
-    height:160px;
+    width:120px;
+    height:120px;
 `
 
 function Service(props) {
 
-    const { serviceName, serviceIcon, navigateLink } = props;
+    const { serviceName, serviceIcon, navigateLink, backgroundColor, color } = props;
     const navigate = useNavigate();
 
     return (
         
-        <ServiceContainer onClick={() => {navigate(`/${navigateLink}`)}}>
-            <ServiceName>{serviceName}</ServiceName>
+        <ServiceContainer backgroundColor={backgroundColor} onClick={() => {navigate(`/${navigateLink}`)}}>
+            <ServiceName color={color}>{serviceName}</ServiceName>
             <ServiceIcon src={serviceIcon}></ServiceIcon>
         </ServiceContainer>
 

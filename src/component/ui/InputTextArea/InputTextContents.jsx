@@ -6,15 +6,21 @@ const StyledTextArea = styled.textarea`
     max-height:400px;
     overflow-y: scroll;
     resize:none;
-    padding:12px 16px;
+    padding:24px 12px;
 
-    border:1px solid #E4E4E4;
+    border:none;
     border-radius: 8px;
     
     font-size:16px;
     font-weight:400;
-    color:#333;
-    background-color:white;
+    color:white;
+    background-color:transparent;
+
+    &:focus {
+        outline: none; /* 기본 브라우저 아웃라인 제거 */
+        border: none; /* 원하는 포커스 스타일 추가 */
+        background-color: none;
+    }
 `
 
 function InputTextContents(props) {

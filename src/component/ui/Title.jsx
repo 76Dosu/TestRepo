@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const TitleText = styled.p`
-    font-size: 48px;
-    font-weight:600;
+    font-size: 40px;
+    font-weight:400;
+    color:white;
 `
 
 function Title(props) {

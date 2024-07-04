@@ -6,8 +6,8 @@ const StyledButton = styled.div`
     width:fit-content;
     padding:16px 48px;
     margin-right:${props => props.marginRight};
-    background-color:#F49090;
-    border:1px solid #F49090;
+    background-color:var(--main-color);
+    border:1px solid var(--main-color);
     border-radius:8px;
 
     font-size:24px;
@@ -18,7 +18,7 @@ const StyledButton = styled.div`
     cursor: pointer;
 
     &:hover {
-        background-color:#F49090;
+        background-color:var(--main-color);
         color:white;
     }
 `

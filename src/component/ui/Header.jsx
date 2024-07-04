@@ -5,20 +5,18 @@ import { useNavigate } from "react-router-dom";
 //ui
 import WriteButtonF from "./WriteButton/WriteButtonF";
 
+//imgase
+import LogoImage from "../../images/_Logo.png"
+
 //style
 const Wrapper = styled.div`
     display:flex;
     align-items:center;
-    height: 80px;
+    padding:20px 0;
 `
 
-const HeaderLogo = styled.p`
-    font-family: "Bangers", system-ui;
-    font-size: 32px;
-    margin:24px 0px;
-    color: #F49090;
-
-    cursor: pointer;
+const HeaderLogo = styled.img`
+    width:130px;
 `
 const Gnb = styled.div`
     display:flex;
@@ -29,7 +27,7 @@ const Gnb = styled.div`
 const GnbList = styled.div`
     font-size: 18px;
     font-weight: bold;
-    color:var(--main-textColor);
+    color:white;
     cursor:pointer;
     margin-right:24px;
 `
@@ -41,10 +39,10 @@ function Header(props) {
     return (
 
         <Wrapper>
-            <HeaderLogo onClick={() => {navigate('/')}}>pictureDaily</HeaderLogo>
+            <HeaderLogo src={LogoImage} onClick={() => {navigate('/')}}></HeaderLogo>
             <Gnb>
-                <GnbList onClick={() => navigate('/manage')}>일기 관리</GnbList>
-                <WriteButtonF buttonName="일기 작성" navigateLink="write"></WriteButtonF>
+                <GnbList onClick={() => navigate('/manage')}>기록보기</GnbList>
+                <WriteButtonF buttonName="작성하기" navigateLink="write"></WriteButtonF>
             </Gnb>
         </Wrapper>
 
