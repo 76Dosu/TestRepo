@@ -46,6 +46,11 @@ const InputFrame = styled.div`
     display:flex;
     align-items:flex-start;
     border-top:2px solid #333;
+    border-bottom:2px solid #333;
+
+    &:first-child {
+        border:none;
+    }
 `
 
 const InputTitleFrame = styled(InputFrame)`
@@ -148,7 +153,7 @@ function DailyWrite(props) {
             <TestText>{results}</TestText>
             
             <WriteButtonFrame onClick={handleClick}>
-                <WriteButtonUF buttonName="작성하기"></WriteButtonUF>
+                <WriteButtonUF buttonName="다음으로"></WriteButtonUF>
             </WriteButtonFrame>
 
             {/* <WriteButtonFrame onClick={onSubmit}>
