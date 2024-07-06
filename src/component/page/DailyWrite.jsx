@@ -5,7 +5,9 @@ import axios from "axios";
 
 //ui
 import Header from "../ui/Header";
-import WriteButtonUF from "../ui/WriteButton/WriteButtonUF";
+import WriteButtonF from "../ui/Button/WriteButtonF";
+import WriteButtonUF from "../ui/Button/WriteButtonUF";
+
 import InputTextContents from "../ui/InputTextArea/InputTextContents";
 import InputTextTitle from "../ui/InputTextArea/InputTextTitle";
 
@@ -45,7 +47,7 @@ const WriteFrame = styled.div`
 const InputFrame = styled.div`
     display:flex;
     align-items:flex-start;
-    border-top:2px solid #333;
+    border-bottom:2px solid #333;
 `
 
 const InputTitleFrame = styled(InputFrame)`
@@ -53,12 +55,23 @@ const InputTitleFrame = styled(InputFrame)`
     align-items:center;
 `
 
+const EntireButtonFrame = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+
+    margin-top:60px;    
+`
+
 const WriteButtonFrame = styled.div`
     display:flex;
     width:fit-content;
 
-    margin-top:40px;
-    margin-left:auto;
+    margin-right:20px;
+
+    &:last-child {
+        margin-right:0px;
+    }
 `
 
 const TestText =styled.p`
@@ -147,13 +160,15 @@ function DailyWrite(props) {
 
             <TestText>{results}</TestText>
             
-            <WriteButtonFrame onClick={handleClick}>
-                <WriteButtonUF buttonName="작성하기"></WriteButtonUF>
-            </WriteButtonFrame>
+            <EntireButtonFrame>
+                <WriteButtonFrame onClick={onSubmit}>
+                    <WriteButtonUF buttonName="뒤로가기"></WriteButtonUF>
+                </WriteButtonFrame>
 
-            {/* <WriteButtonFrame onClick={onSubmit}>
-                <WriteButtonUF buttonName="테스트"></WriteButtonUF>
-            </WriteButtonFrame> */}
+                <WriteButtonFrame onClick={handleClick}>
+                    <WriteButtonF buttonName="다음으로"></WriteButtonF>
+                </WriteButtonFrame>
+            </EntireButtonFrame>
             
         </Wrapper>
         

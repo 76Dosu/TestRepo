@@ -4,19 +4,19 @@ import styled from "styled-components";
 const StyledButton = styled.div`
     width:fit-content;
     padding:12px 16px;
-    background-color:white;
-    border:1px solid #F49090;
+    background-color:#2B3034;
+    border:1px solid #2B3034;
     border-radius:56px;
 
     font-size:18px;
     font-weight:bold;
-    color:#F49090;
+    color:white;
 
     transition: .3s;
     cursor: pointer;
 
     &:hover {
-        background-color:#F49090;
+        background-color:#2B3034;
         color:white;
     }
 `

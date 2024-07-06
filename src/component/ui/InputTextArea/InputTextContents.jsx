@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const StyledTextArea = styled.textarea`
     width:100%;
+    min-height:400px;
     max-height:400px;
     overflow-y: scroll;
     resize:none;

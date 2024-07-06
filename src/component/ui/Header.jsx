@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 //ui
-import WriteButtonF from "./WriteButton/WriteButtonF";
+import HeaderButtonF from "../ui/Button/HeaderButtonF"
 
 //imgase
 import LogoImage from "../../images/_Logo.png"
@@ -42,7 +42,7 @@ function Header(props) {
             <HeaderLogo src={LogoImage} onClick={() => {navigate('/')}}></HeaderLogo>
             <Gnb>
                 <GnbList onClick={() => navigate('/manage')}>기록보기</GnbList>
-                <WriteButtonF buttonName="작성하기" navigateLink="write"></WriteButtonF>
+                <HeaderButtonF buttonName="일기작성" navigateLink="write"></HeaderButtonF>
             </Gnb>
         </Wrapper>
 

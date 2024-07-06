@@ -5,8 +5,6 @@ import styled from "styled-components";
 //ui
 import Title from "../ui/Title";
 import GenImage from "../ui/GenImage";
-import FunctionButtonUF from "../ui/FunctionButton/FunctionButtonUF";
-import FunctionButtonF from "../ui/FunctionButton/FunctionButtonF";
 
 //image
 
@@ -89,8 +87,8 @@ function DailyManage(props) {
             </GenImageFrame>
 
             <FucntionButtonFrame>
-                <FunctionButtonF navigateLink="" marginRight="40px" buttonName="돌아가기"></FunctionButtonF>
-                <FunctionButtonUF buttonName="저장하기"></FunctionButtonUF>
+                {/* <FunctionButtonF navigateLink="" marginRight="40px" buttonName="돌아가기"></FunctionButtonF>
+                <FunctionButtonUF buttonName="저장하기"></FunctionButtonUF> */}
             </FucntionButtonFrame>
         </Wrapper>
         

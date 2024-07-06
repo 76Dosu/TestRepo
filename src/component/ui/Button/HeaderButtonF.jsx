@@ -4,13 +4,13 @@ import styled from "styled-components";
 
 const StyledButton = styled.div`
     width:fit-content;
-    padding:16px 48px;
+    padding:12px 16px;
     margin-right:${props => props.marginRight};
     background-color:var(--main-color);
     border:1px solid var(--main-color);
-    border-radius:8px;
+    border-radius:50px;
 
-    font-size:24px;
+    font-size:18px;
     font-weight:bold;
     color:white;
 
