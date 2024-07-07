@@ -17,6 +17,8 @@ const StyledTextArea = styled.textarea`
     color:white;
     background-color:transparent;
 
+    scrollbar-width: none;
+
     &:focus {
         outline: none; /* 기본 브라우저 아웃라인 제거 */
         border: none; /* 원하는 포커스 스타일 추가 */

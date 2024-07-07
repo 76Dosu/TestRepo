@@ -17,6 +17,7 @@ const Wrapper = styled.div`
 
 const HeaderLogo = styled.img`
     width:130px;
+    cursor:pointer;
 `
 const Gnb = styled.div`
     display:flex;

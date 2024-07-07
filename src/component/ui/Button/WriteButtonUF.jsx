@@ -3,21 +3,21 @@ import styled from "styled-components";
 
 const StyledButton = styled.div`
     width:fit-content;
-    padding:12px 16px;
-    background-color:#2B3034;
-    border:1px solid #2B3034;
+    padding:16px 24px;
+    background-color:white;
+    border:1px solid white;
     border-radius:56px;
 
     font-size:18px;
     font-weight:bold;
-    color:white;
+    color:#15191C;
 
     transition: .3s;
     cursor: pointer;
 
     &:hover {
-        background-color:#2B3034;
-        color:white;
+        background-color:white;
+        color:#333;
     }
 `
 

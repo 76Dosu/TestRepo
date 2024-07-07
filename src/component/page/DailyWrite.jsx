@@ -160,10 +160,9 @@ function DailyWrite(props) {
 
             <TestText>{results}</TestText>
             
-            <EntireButtonFrame>
-                <WriteButtonFrame onClick={onSubmit}>
-                    <WriteButtonUF buttonName="뒤로가기"></WriteButtonUF>
-                </WriteButtonFrame>
+            <WriteButtonFrame onClick={handleClick}>
+                <WriteButtonUF buttonName="다음으로"></WriteButtonUF>
+            </WriteButtonFrame>
 
                 <WriteButtonFrame onClick={handleClick}>
                     <WriteButtonF buttonName="다음으로"></WriteButtonF>
