@@ -23,11 +23,10 @@ const StyledButton = styled.div`
 
 function WriteButtonF(props) {
 
-    const { buttonName, navigateLink } = props;
-    const naivgate = useNavigate();
+    const { buttonName } = props;
 
     return (
-        <StyledButton onClick={() => {naivgate(`/${navigateLink}`)}}>{buttonName}</StyledButton>
+        <StyledButton>{buttonName}</StyledButton>
     )   
 
 }
