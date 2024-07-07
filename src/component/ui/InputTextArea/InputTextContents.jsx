@@ -3,18 +3,19 @@ import styled from "styled-components";
 
 const StyledTextArea = styled.textarea`
     width:100%;
-    min-height:400px;
-    max-height:400px;
+    min-height:300px;
+    max-height:300px;
     overflow-y: scroll;
     resize:none;
-    padding:24px 12px;
+    margin:24px 12px;
 
     border:none;
     border-radius: 8px;
     
     font-size:16px;
     font-weight:400;
-    color:white;
+    line-height:1.6;
+    color:#DDDDDD;
     background-color:transparent;
 
     scrollbar-width: none;
@@ -28,7 +29,7 @@ const StyledTextArea = styled.textarea`
 
 function InputTextContents(props) {
 
-    const { prompt, onChange } = props;
+    const { value, onChange } = props;
 
     const inputTag = useRef(null);
     const longerTextArea = (event, tag) => {
@@ -39,7 +40,7 @@ function InputTextContents(props) {
     };
 
     return (
-        <StyledTextArea onChange={onChange} ref={inputTag} placeholder={"내용을 입력해주세요"} value={prompt} onKeyUp={(event) => longerTextArea(event, inputTag)}></StyledTextArea>
+        <StyledTextArea onChange={onChange} ref={inputTag} placeholder={"내용을 입력해주세요"} value={value} onKeyUp={(event) => longerTextArea(event, inputTag)}></StyledTextArea>
     )
 
 }
