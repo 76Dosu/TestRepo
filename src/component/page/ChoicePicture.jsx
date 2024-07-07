@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 //ui
@@ -67,6 +68,16 @@ function ChoicePicture(props) {
 
     const navigate = useNavigate();
 
+    //키워드 값 동기처리
+    const [keyword, setKeyworld] = useState('')
+
+    const getPosts = () => {
+            axios.get('http://localhost:3001/posts').then((res) => {
+            setKeyworld(res.data[res.data.length - 1].keyword);
+        })
+    }
+
+    // 이미지 생성
     const GPT_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 
     const [imageUrl1, setImageUrl1] = useState('');
@@ -83,7 +94,7 @@ function ChoicePicture(props) {
             },
             body: JSON.stringify({
             model: "dall-e-2",
-            prompt: "flying cat",
+            prompt: `${keyword}를 대표하는 그림을 그려줘`,
             n: 3,
             size: '1024x1024'
             })
@@ -98,6 +109,11 @@ function ChoicePicture(props) {
         }
     };
 
+    useEffect(() => {
+        getPosts();
+        generateImage();
+    }, []);
+
     return (
         
         <Wrapper>
@@ -105,7 +121,7 @@ function ChoicePicture(props) {
 
             <TitleFrame>
                 <Title text="등록할 대표 이미지를 선택하세요."></Title>
-                <SubText onClick={generateImage}>김희찬님의 2024년 5월 3일 일기를 바탕으로 생성된 이미지입니다.</SubText>
+                <SubText>김희찬님의 2024년 5월 3일 일기를 바탕으로 생성된 이미지입니다.</SubText>
             </TitleFrame>
 
             <GenImageFrame>

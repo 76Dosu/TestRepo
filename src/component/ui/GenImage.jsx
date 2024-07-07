@@ -7,6 +7,8 @@ const GenImageItems = styled.img`
     border-radius:36px;
     box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.15);
     margin-right:60px;
+
+    object-fit:cover;
     overflow:hidden;    
 
     &:last-child {
