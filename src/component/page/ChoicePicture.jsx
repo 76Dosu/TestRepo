@@ -80,9 +80,9 @@ function ChoicePicture(props) {
     // 이미지 생성
     const GPT_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 
-    const [imageUrl1, setImageUrlA] = useState('');
-    const [imageUrl2, setImageUrlB] = useState('');
-    const [imageUrl3, setImageUrlC] = useState('');
+    const [imageUrlA, setImageUrlA] = useState('');
+    const [imageUrlB, setImageUrlB] = useState('');
+    const [imageUrlC, setImageUrlC] = useState('');
 
     const generateImageA = async () => {
         try {
@@ -169,9 +169,9 @@ function ChoicePicture(props) {
             </TitleFrame>
 
             <GenImageFrame>
-                <GenImage imgURL={imageUrl1}></GenImage>
-                <GenImage imgURL={imageUrl2}></GenImage>
-                <GenImage imgURL={imageUrl3}></GenImage>
+                <GenImage imgURL={imageUrlA}></GenImage>
+                <GenImage imgURL={imageUrlB}></GenImage>
+                <GenImage imgURL={imageUrlC}></GenImage>
             </GenImageFrame>
 
             <EntireButtonFrame>
