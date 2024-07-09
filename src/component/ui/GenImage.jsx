@@ -17,7 +17,7 @@ const GenImageItems = styled.img`
 `
 
 function GenImage(props) {
-
+    
     const { imgURL } = props;
 
     return (
