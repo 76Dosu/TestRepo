@@ -80,11 +80,11 @@ function ChoicePicture(props) {
     // 이미지 생성
     const GPT_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 
-    const [imageUrl1, setImageUrl1] = useState('');
-    const [imageUrl2, setImageUrl2] = useState('');
-    const [imageUrl3, setImageUrl3] = useState('');
+    const [imageUrl1, setImageUrlA] = useState('');
+    const [imageUrl2, setImageUrlB] = useState('');
+    const [imageUrl3, setImageUrlC] = useState('');
 
-    const generateImage = async () => {
+    const generateImageA = async () => {
         try {
         const response = await fetch('https://api.openai.com/v1/images/generations', {
             method: 'POST',
@@ -95,15 +95,57 @@ function ChoicePicture(props) {
             body: JSON.stringify({
             model: "dall-e-2",
             prompt: `${keyword}를 대표하는 그림을 그려줘`,
-            n: 3,
+            n: 1,
             size: '1024x1024'
             })
         });
 
         const data = await response.json();
-            setImageUrl1(data.data[0].url);
-            setImageUrl2(data.data[1].url);
-            setImageUrl3(data.data[2].url);
+            setImageUrlA(data.data[0].url);
+        } catch (error) {
+            console.error('Error generating image:', error);
+        }
+    };
+    const generateImageB = async () => {
+        try {
+        const response = await fetch('https://api.openai.com/v1/images/generations', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${GPT_API_KEY}`
+            },
+            body: JSON.stringify({
+            model: "dall-e-2",
+            prompt: `${keyword}를 대표하는 그림을 그려줘`,
+            n: 1,
+            size: '1024x1024'
+            })
+        });
+
+        const data = await response.json();
+            setImageUrlB(data.data[0].url);
+        } catch (error) {
+            console.error('Error generating image:', error);
+        }
+    };
+    const generateImageC = async () => {
+        try {
+        const response = await fetch('https://api.openai.com/v1/images/generations', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${GPT_API_KEY}`
+            },
+            body: JSON.stringify({
+            model: "dall-e-2",
+            prompt: `${keyword}를 대표하는 그림을 그려줘`,
+            n: 1,
+            size: '1024x1024'
+            })
+        });
+
+        const data = await response.json();
+            setImageUrlC(data.data[0].url);
         } catch (error) {
             console.error('Error generating image:', error);
         }
@@ -111,7 +153,9 @@ function ChoicePicture(props) {
 
     useEffect(() => {
         getPosts();
-        generateImage();
+        generateImageA();
+        generateImageB();
+        generateImageC();
     }, []);
 
     return (
