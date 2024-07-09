@@ -84,7 +84,7 @@ function ChoicePicture(props) {
     const [imageUrlB, setImageUrlB] = useState('');
     const [imageUrlC, setImageUrlC] = useState('');
 
-    const generateImageA = async () => {
+    const generateImage = async () => {
         try {
         const response = await fetch('https://api.openai.com/v1/images/generations', {
             method: 'POST',
@@ -95,57 +95,15 @@ function ChoicePicture(props) {
             body: JSON.stringify({
             model: "dall-e-2",
             prompt: `${keyword}를 대표하는 그림을 그려줘`,
-            n: 1,
+            n: 3,
             size: '1024x1024'
             })
         });
 
         const data = await response.json();
             setImageUrlA(data.data[0].url);
-        } catch (error) {
-            console.error('Error generating image:', error);
-        }
-    };
-    const generateImageB = async () => {
-        try {
-        const response = await fetch('https://api.openai.com/v1/images/generations', {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${GPT_API_KEY}`
-            },
-            body: JSON.stringify({
-            model: "dall-e-2",
-            prompt: `${keyword}를 대표하는 그림을 그려줘`,
-            n: 1,
-            size: '1024x1024'
-            })
-        });
-
-        const data = await response.json();
-            setImageUrlB(data.data[0].url);
-        } catch (error) {
-            console.error('Error generating image:', error);
-        }
-    };
-    const generateImageC = async () => {
-        try {
-        const response = await fetch('https://api.openai.com/v1/images/generations', {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${GPT_API_KEY}`
-            },
-            body: JSON.stringify({
-            model: "dall-e-2",
-            prompt: `${keyword}를 대표하는 그림을 그려줘`,
-            n: 1,
-            size: '1024x1024'
-            })
-        });
-
-        const data = await response.json();
-            setImageUrlC(data.data[0].url);
+            setImageUrlB(data.data[1].url);
+            setImageUrlC(data.data[2].url);
         } catch (error) {
             console.error('Error generating image:', error);
         }
@@ -153,9 +111,7 @@ function ChoicePicture(props) {
 
     useEffect(() => {
         getPosts();
-        generateImageA();
-        generateImageB();
-        generateImageC();
+        generateImage();
     }, []);
 
     return (
