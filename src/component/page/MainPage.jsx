@@ -50,7 +50,7 @@ function MainPage(props) {
                          backgroundColor="#2B3034" 
                          serviceName="일기관리" 
                          serviceIcon={DailyManage} 
-                         navigateLink=""></Service>
+                         navigateLink="viewDaily"></Service>
             </ServiceFrame>
         </Wrapper>
         

@@ -113,7 +113,6 @@ function DailyWrite(props) {
 
     const handleClick = (e) => {
         callGPT(prompt, results);
-        console.log("test")
     }
 
     useEffect(() => {

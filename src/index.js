@@ -7,6 +7,7 @@ import './index.css';
 import MainPage from './component/page/MainPage';
 import DailyWrite from './component/page/DailyWrite';
 import ChoicePicture from './component/page/ChoicePicture';
+import ViewDaily from './component/page/ViewDaily';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +16,7 @@ root.render(
             <Route index element={<MainPage />}></Route>
             <Route path="/write" element={<DailyWrite />}></Route>
             <Route path="/choicePicture" element={<ChoicePicture />}></Route>
+            <Route path="/viewDaily" element={<ViewDaily />}></Route>
         </Routes>
     </BrowserRouter>
 );
