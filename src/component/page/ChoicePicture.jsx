@@ -40,7 +40,7 @@ const SubText = styled.p`
 const GenImageFrame = styled.div`
     display:flex;
     align-items:center;
-    justify-content: center;
+    justify-content: space-between;
 
     width:100%;
 `
@@ -64,17 +64,20 @@ const WriteButtonFrame = styled.div`
     }
 `
 
-const InputFrame = styled.div`
-    width:100%;
-    border:1px solid red;
+const InputFrame = styled.div`    
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 `
 
 const Input = styled.input`
-    width:100%;
+    width:fit-content;
+    display:none;
 `
 
 const Label = styled.label`
-    width:100%;
+    width:24px;
+    height:24px;
 `
 
 function ChoicePicture(props) {
@@ -138,25 +141,22 @@ function ChoicePicture(props) {
             </TitleFrame>
 
             <GenImageFrame>
-                <InputFrame>
-                    <Label for="test">
-                        <GenImage imgURL={imageUrlA}></GenImage>
-                    </Label>
-                    <Input name="test" id="test" value="test" type="radio"></Input>
+                <InputFrame onClick={(e) => {console.log(imageUrlA)}}>
+                    <GenImage imgURL={imageUrlA}></GenImage>
+                    <Label for="test"></Label>
+                    <Input name="test" id="test" value={imageUrlA} type="radio"></Input>
                 </InputFrame>
                 
-                <InputFrame>
-                    <Label for="test">
-                        <GenImage imgURL={imageUrlB}></GenImage>
-                    </Label>
-                    <Input name="test" id="test" value="test" type="radio"></Input>
+                <InputFrame onClick={(e) => {console.log(imageUrlB)}}>
+                    <GenImage imgURL={imageUrlB}></GenImage>
+                    <Label for="test1"></Label>
+                    <Input name="test" id="test1" value={imageUrlB} type="radio"></Input>
                 </InputFrame>
 
-                <InputFrame>
-                    <Label for="test">
-                        <GenImage imgURL={imageUrlC}></GenImage>
-                    </Label>
-                    <Input name="test" id="test" value="test" type="radio"></Input>
+                <InputFrame onClick={(e) => {console.log(imageUrlC)}}>
+                    <GenImage imgURL={imageUrlC}></GenImage>
+                    <Label for="test2"></Label>
+                    <Input name="test" id="test2" value={imageUrlC} type="radio"></Input>
                 </InputFrame>
             </GenImageFrame>
 
