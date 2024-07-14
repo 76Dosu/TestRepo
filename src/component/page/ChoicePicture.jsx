@@ -64,6 +64,19 @@ const WriteButtonFrame = styled.div`
     }
 `
 
+const InputFrame = styled.div`
+    width:100%;
+    border:1px solid red;
+`
+
+const Input = styled.input`
+    width:100%;
+`
+
+const Label = styled.label`
+    width:100%;
+`
+
 function ChoicePicture(props) {
 
     const navigate = useNavigate();
@@ -125,9 +138,26 @@ function ChoicePicture(props) {
             </TitleFrame>
 
             <GenImageFrame>
-                <GenImage imgURL={imageUrlA}></GenImage>
-                <GenImage imgURL={imageUrlB}></GenImage>
-                <GenImage imgURL={imageUrlC}></GenImage>
+                <InputFrame>
+                    <Label for="test">
+                        <GenImage imgURL={imageUrlA}></GenImage>
+                    </Label>
+                    <Input name="test" id="test" value="test" type="radio"></Input>
+                </InputFrame>
+                
+                <InputFrame>
+                    <Label for="test">
+                        <GenImage imgURL={imageUrlB}></GenImage>
+                    </Label>
+                    <Input name="test" id="test" value="test" type="radio"></Input>
+                </InputFrame>
+
+                <InputFrame>
+                    <Label for="test">
+                        <GenImage imgURL={imageUrlC}></GenImage>
+                    </Label>
+                    <Input name="test" id="test" value="test" type="radio"></Input>
+                </InputFrame>
             </GenImageFrame>
 
             <EntireButtonFrame>
