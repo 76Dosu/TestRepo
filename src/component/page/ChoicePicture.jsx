@@ -43,6 +43,7 @@ const GenImageFrame = styled.div`
     justify-content: space-between;
 
     width:100%;
+    gap:24px;
 `
 
 const EntireButtonFrame = styled.div`
@@ -125,6 +126,8 @@ function ChoicePicture(props) {
         }
     };
 
+    // 대표이미지 등록
+
     useEffect(() => {
         getPosts();
         generateImage();
@@ -141,19 +144,19 @@ function ChoicePicture(props) {
             </TitleFrame>
 
             <GenImageFrame>
-                <InputFrame onClick={(e) => {console.log(imageUrlA)}}>
+                <InputFrame>
                     <GenImage imgURL={imageUrlA}></GenImage>
                     <Label for="test"></Label>
                     <Input name="test" id="test" value={imageUrlA} type="radio"></Input>
                 </InputFrame>
                 
-                <InputFrame onClick={(e) => {console.log(imageUrlB)}}>
+                <InputFrame>
                     <GenImage imgURL={imageUrlB}></GenImage>
                     <Label for="test1"></Label>
                     <Input name="test" id="test1" value={imageUrlB} type="radio"></Input>
                 </InputFrame>
 
-                <InputFrame onClick={(e) => {console.log(imageUrlC)}}>
+                <InputFrame>
                     <GenImage imgURL={imageUrlC}></GenImage>
                     <Label for="test2"></Label>
                     <Input name="test" id="test2" value={imageUrlC} type="radio"></Input>
