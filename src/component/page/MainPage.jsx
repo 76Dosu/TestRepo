@@ -38,6 +38,7 @@ function MainPage(props) {
         <Wrapper>
             <img src={ActionTestImage} alt="ActionTestImage" style={{width:"50%", height:"auto"}}></img>
             <img src={ActionTestImage2} alt="ActionTestImage" style={{width:"50%", height:"auto"}}></img>
+            <p>test</p>
 
             {/* <Title text="안녕하세요 김희찬님" ></Title>
 
