@@ -10,6 +10,7 @@ import styled from "styled-components";
 // import DailyWrite from '../../images/_DailyWrite.png';
 // import DailyManage from '../../images/_DailyManage.png';
 import ActionTestImage from '../../images/ActionTest_Image.png';
+import ActionTestImage2 from '../../images/sunsan-001.jpg';
 
 //styled
 const Wrapper = styled.div`
@@ -36,6 +37,7 @@ function MainPage(props) {
         
         <Wrapper>
             <img src={ActionTestImage} alt="ActionTestImage" style={{width:"50%", height:"auto"}}></img>
+            <img src={ActionTestImage2} alt="ActionTestImage" style={{width:"50%", height:"auto"}}></img>
 
             {/* <Title text="안녕하세요 김희찬님" ></Title>
 
