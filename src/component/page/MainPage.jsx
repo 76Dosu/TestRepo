@@ -9,8 +9,8 @@ import styled from "styled-components";
 //image
 // import DailyWrite from '../../images/_DailyWrite.png';
 // import DailyManage from '../../images/_DailyManage.png';
-import ActionTestImage from '../../images/ActionTest_Image.png';
-import ActionTestImage2 from '../../images/sunsan-001.jpg';
+import ActionTestImage from '../../images/ActionTest_Image1.png';
+import ActionTestImage2 from '../../images/ActionTest_Image2.jpg';
 
 //styled
 const Wrapper = styled.div`
