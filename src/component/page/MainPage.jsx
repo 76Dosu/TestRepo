@@ -10,7 +10,7 @@ import styled from "styled-components";
 // import DailyWrite from '../../images/_DailyWrite.png';
 // import DailyManage from '../../images/_DailyManage.png';
 import ActionTestImage from '../../images/ActionTest_Image1.png';
-import ActionTestImage2 from '../../images/ActionTest_Image2.jpg';
+import ActionTestImage2 from '../../images/waves.png';
 
 //styled
 const Wrapper = styled.div`
